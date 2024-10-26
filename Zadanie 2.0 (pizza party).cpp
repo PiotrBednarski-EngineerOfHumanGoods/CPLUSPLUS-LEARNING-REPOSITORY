@@ -6,21 +6,34 @@ int main() {
 
     cout << "Podaj ile przyszło gości: ";
     cin >> ilośćgości;
-    cout << "Podaj liczbę pokrojonych kawałków pizzy: ";
+
+    // Walidacja wejścia
+    if (ilośćgości <= 0) {
+        cout << "Liczba gości nie może być równa 0." << endl;
+        return 1; // Zakończ program
+    }
+
+    cout << "Podaj liczbę kawałków pizzy: ";
     cin >> ilośćkawałków;
 
-    if (ilośćgości > 0) {
-        if (ilośćkawałków < ilośćgości) {
-            cout << "Za mało kawałków pizzy dla gości!" << endl;
-        } else {
-            int kawałkinagościa = ilośćkawałków / ilośćgości;
-            int resztadlaorganizatora = ilośćkawałków % ilośćgości;
+    if (ilośćkawałków < 0) {
+        cout << "Liczba kawałków pizzy nie może być ujemna." << endl;
+        return 1; // Zakończ program
+    }
 
-            cout << "Każdy gość otrzyma " << kawałkinagościa << " kawałków pizzy." << endl;
-            cout << "Pozostałe kawałki dla organizatora to: " << resztadlaorganizatora << endl;
-        }
+    if (ilośćkawałków >= ilośćgości) {
+        int kawałkinagościa = ilośćkawałków / ilośćgości;
+        int resztadlaorganizatora = ilośćkawałków % ilośćgości;
+
+        cout << "Każdy gość otrzyma " << kawałkinagościa << " kawałków pizzy." << endl;
+        cout << "Pozostałe kawałki dla organizatora to: " << resztadlaorganizatora << endl;
     } else {
-        cout << "Liczba gości nie może być równa 0." << endl;
+        // Oblicz, ile pizz potrzeba, aby każdy gość mógł otrzymać przynajmniej 1 kawałek
+        int kawałkówPotrzebnych = ilośćgości; // Każdy gość dostaje przynajmniej 1 kawałek
+        int pizzyPotrzebne = (kawałkówPotrzebnych + 7) / 8; // Zaokrąglij w górę
+
+        cout << "Za mało kawałków pizzy dla gości!" << endl;
+        cout << "Potrzebujesz " << pizzyPotrzebne << " pizz, aby każdy gość mógł otrzymać przynajmniej 1 kawałek." << endl;
     }
 
     return 0;
