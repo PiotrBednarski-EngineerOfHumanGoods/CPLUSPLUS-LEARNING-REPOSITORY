@@ -28,7 +28,8 @@ void obramowanyProstokat(int a, int b) {
         for (int j = 0; j < a; ++j) {
             if (i == 0 || i == b - 1 || j == 0 || j == a - 1) {
                 cout << "*";
-            } else {
+            }
+            else {
                 cout << " ";
             }
         }
@@ -47,7 +48,10 @@ void trojkatLewyDolny(int a) {
 
 void trojkatPrawyGorny(int a) {
     for (int i = a; i > 0; --i) {
-        for (int j = 0; j < i; ++j) {
+        for (int j = 0; j < a - i; ++j) {
+            cout << " ";
+        }
+        for (int k = 0; k < i; ++k) {
             cout << "*";
         }
         cout << endl;
